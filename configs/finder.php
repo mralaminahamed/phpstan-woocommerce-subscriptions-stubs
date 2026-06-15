@@ -1,12 +1,14 @@
 <?php
 
-return \StubsGenerator\Finder::create()
+use StubsGenerator\Finder;
+
+return Finder::create()
     ->in( array(
         'source/woocommerce-subscriptions/vendor/woocommerce/subscriptions-core',
         'source/woocommerce-subscriptions/includes',
     ) )
     ->append(
-        \StubsGenerator\Finder::create()
+        Finder::create()
             ->in(['source/woocommerce-subscriptions'])
             ->files()
             ->depth('< 1')

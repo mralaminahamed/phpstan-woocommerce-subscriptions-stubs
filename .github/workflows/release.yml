@@ -1,0 +1,68 @@
+name: Release new version
+
+on:
+  push:
+    paths:
+      - ".github/workflows/release.yml"
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  release-new-stubs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          extensions: json zip xdebug
+          coverage: none
+          tools: composer
+
+      - name: Get Composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: "${{ runner.os }}-${{ hashFiles('**/composer.lock') }}"
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-suggest --no-progress --no-interaction --ignore-platform-reqs
+
+      - name: Set up Git user
+        run: |
+          git config user.name 'github-actions'
+          git config user.email 'github-actions@github.com'
+
+      - name: Release new stubs from latest version
+        run: bash bin/generate.sh
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.PERSONAL_TOKEN }}
+          commit-message: Generate stubs from latest version
+          committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
+          signoff: false
+          delete-branch: true
+          title: 'Generate stubs from latest version'
+          body: |
+            This PR updates the codebase with the latest changes from the WordPress Plugin Directory
+            - Update from WordPress Plugin Directory
+          labels: |
+            update
+            automated pr
+          assignees: mralaminahamed
+          draft: false
+
+      - name: Check Output
+        run: |
+          echo "Pull Request created successfully!"

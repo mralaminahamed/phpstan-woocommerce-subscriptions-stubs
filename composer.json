@@ -53,12 +53,6 @@
         }
     },
     "scripts": {
-        "post-install-cmd": [
-            "@composer --working-dir=source/ update --no-interaction"
-        ],
-        "post-update-cmd": [
-            "@composer --working-dir=source/ update --no-interaction"
-        ],
         "analyze": "phpstan analyze",
         "check": [
             "@cs",

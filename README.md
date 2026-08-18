@@ -36,8 +36,8 @@ composer require --dev mralaminahamed/woocommerce-subscriptions-stubs:^1.0
 ### Manual Installation
 
 Download the stub files directly:
-- [woocommerce-subscriptions-stubs.php](https://raw.githubusercontent.com/mralaminahamed/phpstan-woocommerce-subscriptions-stubs/main/woocommerce-subscriptions-stubs.php)
-- [woocommerce-subscriptions-constants-stubs.php](https://raw.githubusercontent.com/mralaminahamed/phpstan-woocommerce-subscriptions-stubs/main/woocommerce-subscriptions-constants-stubs.php)
+- [woocommerce-subscriptions-stubs.stub](https://raw.githubusercontent.com/mralaminahamed/phpstan-woocommerce-subscriptions-stubs/main/woocommerce-subscriptions-stubs.stub)
+- [woocommerce-subscriptions-constants-stubs.stub](https://raw.githubusercontent.com/mralaminahamed/phpstan-woocommerce-subscriptions-stubs/main/woocommerce-subscriptions-constants-stubs.stub)
 
 ## 🔧 Basic Configuration
 
@@ -71,8 +71,8 @@ phpstan-woocommerce-subscriptions-stubs/
 ├── docs/                                               # Detailed documentation
 │   ├── usage.md                                        # Usage guide
 │   └── contributing.md                                 # Contribution guidelines
-├── woocommerce-subscriptions-constants-stubs.php       # Constants stub file
-├── woocommerce-subscriptions-stubs.php                 # Main stubs file with classes and functions
+├── woocommerce-subscriptions-constants-stubs.stub       # Constants stub file
+├── woocommerce-subscriptions-stubs.stub                 # Main stubs file with classes and functions
 ├── source/                                             # Source for generating stubs
 └── tests/                                              # Test files
     ├── bootstrap.php                                   # Test bootstrap

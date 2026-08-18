@@ -8,8 +8,8 @@ ROOT_DIR="$(dirname "$SCRIPT_DIR")"
 
 HEADER=$'/**\n * Generated stub declarations for WooCommerce Subscriptions.\n * @see https://woocommerce.com/products/woocommerce-subscriptions/\n * @see https://github.com/mralaminahamed/phpstan-woocommerce-subscriptions-stubs\n */'
 
-FILE="$ROOT_DIR/woocommerce-subscriptions-stubs.php"
-FILE_CONSTANTS="$ROOT_DIR/woocommerce-subscriptions-constants-stubs.php"
+FILE="$ROOT_DIR/woocommerce-subscriptions-stubs.stub"
+FILE_CONSTANTS="$ROOT_DIR/woocommerce-subscriptions-constants-stubs.stub"
 GENERATOR_BIN="$ROOT_DIR/vendor/bin/generate-stubs"
 FINDER_FILE="$ROOT_DIR/configs/finder.php"
 

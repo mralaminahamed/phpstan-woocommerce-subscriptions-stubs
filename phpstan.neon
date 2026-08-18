@@ -1,8 +1,8 @@
 parameters:
     paths:
-        - woocommerce-subscriptions-stubs.php
+        - woocommerce-subscriptions-stubs.stub
     scanFiles:
-        - woocommerce-subscriptions-constants-stubs.php
+        - woocommerce-subscriptions-constants-stubs.stub
     bootstrapFiles:
         - configs/bootstrap.php
     level: 5

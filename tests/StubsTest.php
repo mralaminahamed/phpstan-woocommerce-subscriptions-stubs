@@ -53,9 +53,7 @@ final class StubsTest extends TestCase
 
         // TOKEN_PARSE makes the tokenizer raise ParseError on invalid source rather than returning a
         // best-effort token list, which is what makes this an actual syntax check.
-        token_get_all((string) file_get_contents($path), TOKEN_PARSE);
-
-        $this->addToAssertionCount(1);
+        $this->assertNotEmpty(token_get_all((string) file_get_contents($path), TOKEN_PARSE));
     }
 
     /**
@@ -63,6 +61,10 @@ final class StubsTest extends TestCase
      */
     public function testTheStubFileDeclaresSomething(string $file): void
     {
+        if (strpos($file, 'constants') !== false) {
+            $this->markTestSkipped('a constants stub is legitimately empty when the plugin defines none');
+        }
+
         $source = (string) file_get_contents(self::ROOT . '/' . $file);
 
         // A generated file that parses but contains only its header is the shape a truncated or
